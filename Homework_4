@@ -1,0 +1,112 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+#discoment the task
+
+print('Задача 1')
+'''
+Используя библиотеку Matplotlib, постройте график экспоненты. Подпишите оси. Дайте название графику.'''
+
+
+x = np.linspace(-5,5,100)
+e=2.72
+y = e**x
+plt.plot(x,y)
+plt.title('График y=e**x')
+plt.xlabel('ось x')
+plt.ylabel('ось y')
+plt.show()
+
+print('Задача 2')
+'''
+Используя библиотеку Matplotlib, постройте графики функций y = x^3 и y = x^2 на одном графике. 
+
+* Дайте название графику 
+* Дайте названия осям
+* Присвойте лейблы и выведите легенду
+* Графики функций должены быть отрисованы пунктирными линиями (любыми из доступных на ваш вкус) '''
+'''y=x**3
+y1=x**2
+plt.plot(x,y, 'c--',label='x**3')
+plt.plot(x,y1, 'y*', label='x**2')
+plt.title('График y=x**3  and  y= x**2')
+plt.xlabel('ось x')
+plt.ylabel('ось y')
+plt.legend
+plt.show()'''
+
+print('4')
+'''from scipy import misc
+img = misc.ascent()'''
+'''plt.imshow(img)
+plt.show()'''
+
+print('Задача 4')
+#plt.imshow(img, cmap='gray') # выводим первый канал в заданной цветовой палитре 
+#plt.show()
+
+'''data = pd.read_csv('data.csv', encoding='cp1250')
+data.index= pd.to_datetime(data['InvoiceDate'])
+data.drop('InvoiceDate',axis=1,inplace=True)
+print(data)'''
+
+print('Задача 5')
+'''
+Подгрузите данные datatraining.txt при помощи соответствующей функции библиотеки Pandas.
+ Преобразуйте индекс в datetime index, удалите столбец с датой. 
+ Постройте график всех парных взаимосвязей с разметкой цвета в соответствии с метками классов (столбец Occupancy)
+
+P.S. используйте функцию sns.pairplot c параметром hue'''
+
+import pandas as pd
+data=pd.read_csv('datatraining.txt')
+data.index=pd.to_datetime(data['date'])
+data.drop('date',axis=1, inplace=True)
+
+import seaborn as sns
+#sns.pairplot(data, hue='Occupancy')
+#plt.show()'''
+
+print('Задача 6')
+'''
+Постройте boxplot всех признаков.
+
+P.S. график должен быть читаемым, т.е.
+* отрегулируйте размер графика
+* предварительно "отскейлите" все *числовые* признаки, т.е. приведите к стандартному нормальному распределению при помощи функции ниже'''
+
+def scale(df):
+    return (df - df.mean()) / df.std()
+
+'''plt.figure(figsize=(12, 6))
+sns.boxplot(data=df.drop('target', axis=1), x='sepal length (cm)', y='target_names', hue='target_names')
+plt.show()'''
+
+'''plt.figure(figsize=(12,6))
+sns.boxplot(data=df.drop('target', axis=1), palette=sns.color_palette('Greens'), orient='h')
+plt.show()'''
+
+'''sns.boxplot(data=scale(data), palette=sns.color_palette('Greens'), orient='v')
+plt.show()'''
+
+print('Задача 7')
+'''
+Постройте violinplot всех признаков
+
+P.S. Предварительно приведите их к стандартному нормальному распределению как мы делали в предыдущей задаче'''
+
+'''def scale(df):
+    return (df - df.mean()) / df.std()
+
+
+sns.violinplot(data=scale(data), y='Occupancy', hue='Occupancy')
+plt.show()'''
+
+print('Задача 8')
+'''
+Нарисуйте heatmap матрицы корреляций используя функцию sns.heatmap(). Отрегулируйте масштаб, подберите подходящую палитру'''
+
+'''corr = data.corr()
+sns.heatmap(corr, cmap=sns.color_palette("bright", 1000), annot=True)
+plt.show()'''
+
